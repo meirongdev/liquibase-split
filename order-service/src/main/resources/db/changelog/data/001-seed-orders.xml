@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="001-seed-orders" author="meirong">
+        <insert tableName="orders">
+            <column name="id" valueNumeric="1001"/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="username" value="alice"/>
+            <column name="status" value="PAID"/>
+            <column name="total_amount" valueNumeric="99.99"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <insert tableName="order_items">
+            <column name="id" valueNumeric="2001"/>
+            <column name="order_id" valueNumeric="1001"/>
+            <column name="product_id" valueNumeric="3001"/>
+            <column name="quantity" valueNumeric="1"/>
+            <column name="unit_price" valueNumeric="99.99"/>
+        </insert>
+
+        <insert tableName="payments">
+            <column name="id" valueNumeric="4001"/>
+            <column name="order_id" valueNumeric="1001"/>
+            <column name="amount" valueNumeric="99.99"/>
+            <column name="status" value="PAID"/>
+            <column name="paid_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <sql>SELECT setval(pg_get_serial_sequence('${service_schema}.orders', 'id'), COALESCE((SELECT MAX(id) FROM ${service_schema}.orders), 1), true)</sql>
+        <sql>SELECT setval(pg_get_serial_sequence('${service_schema}.order_items', 'id'), COALESCE((SELECT MAX(id) FROM ${service_schema}.order_items), 1), true)</sql>
+        <sql>SELECT setval(pg_get_serial_sequence('${service_schema}.payments', 'id'), COALESCE((SELECT MAX(id) FROM ${service_schema}.payments), 1), true)</sql>
+    </changeSet>
+</databaseChangeLog>

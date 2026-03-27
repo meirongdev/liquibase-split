@@ -1,0 +1,5 @@
+migration:
+  target-datasource:
+    url: jdbc:postgresql://localhost:5435/orderdb
+    username: postgres
+    password: postgres

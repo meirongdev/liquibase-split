@@ -19,9 +19,9 @@ This is an active POC project at /Users/matthew/projects/meirongdev/liquibase-sp
 ## Implementation Progress
 
 - Step 1 (Parent POM): ✅ DONE — committed
-- Step 2 (Monolith): pending
-- Step 3 (User Service): pending
-- Step 4 (Product Service): pending
-- Step 5 (Order Service): pending
-- Step 6 (Docker Compose): pending
-- Step 7 (Scripts & docs): pending
+- Step 2 (Monolith): ✅ DONE
+- Step 3 (User Service): ✅ DONE
+- Step 4 (Product Service): ✅ DONE
+- Step 5 (Order Service): ✅ DONE
+- Step 6 (Docker Compose): ✅ DONE
+- Step 7 (Scripts & docs): ✅ DONE
